@@ -1,0 +1,3 @@
+class WorkerSpec extends TestKit {
+
+}
