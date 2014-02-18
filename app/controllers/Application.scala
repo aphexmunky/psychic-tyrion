@@ -4,20 +4,20 @@ import play.api._
 import play.api.mvc._
 import play.api.libs.concurrent.Akka
 import service.{TestWorker, Master}
-import akka.actor.Props
+import akka.actor.{Props, ActorPath}
 import play.api.Play.current
 
 object Application extends Controller {
 
-  val m = Akka.system.actorOf(Props[Master], "master")
-  val w1 = Akka.system.actorOf(Props(new TestWorker(m.path)))
-  val w2 = Akka.system.actorOf(Props(new TestWorker(m.path)))
-  val w3 = Akka.system.actorOf(Props(new TestWorker(m.path)))
+  // val m = Akka.system.actorOf(Props[Master], "master")
+  val w1 = Akka.system.actorOf(Props(new TestWorker(ActorPath.fromString("akka.tcp://application@127.0.0.1:2552"))))
+  // val w2 = Akka.system.actorOf(Props(new TestWorker(m.path)))
+  // val w3 = Akka.system.actorOf(Props(new TestWorker(m.path)))
   
   def index = Action {
-    s.foreach( str =>
-      m ! str
-    )
+    // s.foreach( str =>
+    //   m ! str
+    // )
     Ok(views.html.index("Your new application is ready."))
   }
   
