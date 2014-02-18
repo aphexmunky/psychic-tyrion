@@ -10,9 +10,12 @@ import play.api.Play.current
 object Application extends Controller {
 
   val m = Akka.system.actorOf(Props[Master], "master")
-  val w1 = Akka.system.actorOf(Props(new TestWorker(m.path)))
-  val w2 = Akka.system.actorOf(Props(new TestWorker(m.path)))
-  val w3 = Akka.system.actorOf(Props(new TestWorker(m.path)))
+  // val w1 = Akka.system.actorOf(Props(new TestWorker(m.path)))
+  // val w2 = Akka.system.actorOf(Props(new TestWorker(m.path)))
+  // val w3 = Akka.system.actorOf(Props(new TestWorker(m.path)))
+  // val w4 = Akka.system.actorOf(Props(new TestWorker(m.path)))
+  // val w5 = Akka.system.actorOf(Props(new TestWorker(m.path)))
+  // val w6 = Akka.system.actorOf(Props(new TestWorker(m.path)))
   
   def index = Action {
     s.foreach( str =>
